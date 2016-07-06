@@ -4,27 +4,54 @@
     <meta charset="UTF-8">
     <title>Lynda: Form Validation</title>
     <link rel="stylesheet" href="css/simple-form.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
 <div class="page">
-    <section class="card register">
-        <form name="myform">
-            <div class="textintro">
+    <section class="card register" ng-app>
+        <form name="simpleForm">
+            <div class="textIntro">
                 <h1>Form Validation</h1>
                 <p>Please fill out the following form</p>
+                <p ng-show="simpleForm.firstName.$invalid">You must fill out your first name.</p>
             </div>
             <fieldset>
-                <input type="text" name="firstname" placeholder="First Name">
-                <input type="text" name="lastname" placeholder="Last Name">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
+                <input
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        ng-model="user.firstName"
+                        ng-required="true"
+                >
+
+                <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        ng-model="user.lastName"
+                >
+
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        ng-model="user.email"
+                >
+
+                <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        ng-model="user.password"
+                >
+
             </fieldset>
             <button type="submit" class="btn">Submit</button>
         </form>
     </section>
 </div>
 
-<script src="node_modules/angular/angular.js"></script>
-<script src="js/script.js"></script>
+
 </body>
 </html>
