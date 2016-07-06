@@ -9,11 +9,19 @@
 </head>
 <body>
 <div class="page">
-    <section class="card register" ng-app>
-        <form name="simpleForm">
+    <section
+            class="card register"
+            ng-app="formApp"
+            ng-controller="RegistrationFormController as vm"
+    >
+        <form
+                name="simpleForm"
+                ng-submit="vm.register()"
+        >
             <div class="textIntro">
                 <h1>Form Validation</h1>
                 <p>Please fill out the following form</p>
+                <p ng-show="vm.message">{{ vm.message }}</p>
             </div>
             <fieldset>
                 <input
