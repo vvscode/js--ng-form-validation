@@ -14,7 +14,6 @@
             <div class="textIntro">
                 <h1>Form Validation</h1>
                 <p>Please fill out the following form</p>
-                <p ng-show="simpleForm.firstName.$invalid">You must fill out your first name.</p>
             </div>
             <fieldset>
                 <input
@@ -24,13 +23,16 @@
                         ng-model="user.firstName"
                         ng-required="true"
                 >
+                <p class="error validation-error" ng-show="simpleForm.firstName.$invalid && simpleForm.firstName.$touched">You must fill out your first name.</p>
 
                 <input
                         type="text"
                         name="lastName"
                         placeholder="Last Name"
                         ng-model="user.lastName"
+                        ng-required="true"
                 >
+                <p class="error validation-error" ng-show="simpleForm.lastName.$invalid && simpleForm.lastName.$touched">You must fill out your last name.</p>
 
                 <input
                         type="email"
@@ -38,13 +40,18 @@
                         placeholder="Email"
                         ng-model="user.email"
                 >
+                <p class="error validation-error" ng-show="simpleForm.email.$invalid && simpleForm.email.$touched">This must be valid email.</p>
 
                 <input
                         type="password"
                         name="password"
                         placeholder="Password"
                         ng-model="user.password"
+                        ng-required="true"
+                        ng-minlength="6"
+
                 >
+                <p class="error validation-error" ng-show="simpleForm.password.$invalid && simpleForm.password.$touched">Password must at least 6 characters</p>
 
             </fieldset>
             <button type="submit" class="btn">Submit</button>
